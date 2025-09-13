@@ -5,8 +5,8 @@ using namespace std;
 int main()
 {
     std::cout << "Calcul de nombre premier en C++\n";
-    // définir une variable pour stocker le nombre à tester
-    int nombre = 321;
+    long long unsigned nombre = 1844674407371371507;
+    cout << "Test si " << nombre << " est premier..." << endl;
     if (IsPrime(nombre))
     {
       cout << nombre << " est premier" << endl;
