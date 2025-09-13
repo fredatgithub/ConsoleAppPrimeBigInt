@@ -124,6 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApplicationPrimeCpp.cpp" />
+    <ClCompile Include="PrimeHelper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PrimeHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
