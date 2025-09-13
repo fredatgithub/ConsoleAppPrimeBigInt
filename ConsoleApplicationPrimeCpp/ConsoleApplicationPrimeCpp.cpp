@@ -16,5 +16,15 @@ int main()
       cout << nombre << " n'est pas premier" << endl;
     }
 
+    string grandNombre = "1234567890123456789012345678901234567890";
+    cout << "Test si " << grandNombre << " est premier..." << endl;
+    if (IsBigIntPrime(grandNombre))
+    {
+      cout << grandNombre << " est premier" << endl;
+    }
+    else
+    {
+      cout << grandNombre << " n'est pas premier" << endl;
+    }
     return 0;
 }

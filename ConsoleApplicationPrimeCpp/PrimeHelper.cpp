@@ -1,5 +1,7 @@
 #include "PrimeHelper.h"
 #include <cmath>
+#include <algorithm>
+#include <string>
 
 static bool IsPrime(long long unsigned number) {
   if (number < 2) return false;              // 0 et 1 ne sont pas premiers
@@ -57,6 +59,38 @@ static bool IsPrimeMillerRabin(long long unsigned n, int k = 5) {
   for (int i = 0; i < k; i++) {
     long long unsigned a = 2 + rand() % (n - 4);
     if (witness(a)) return false;
+  }
+  return true;
+}
+
+
+
+// Retourne (a mod b) où a est donné sous forme de string
+static unsigned int ModString(const std::string& a, unsigned int b) {
+  unsigned long long res = 0;
+  for (char c : a) {
+    res = (res * 10 + (c - '0')) % b;
+  }
+  return static_cast<unsigned int>(res);
+}
+
+// Vérifie si un string représente un nombre premier
+static bool IsBigIntPrime(const std::string& numberStr) {
+  // Gérer les cas de base
+  if (numberStr == "0" || numberStr == "1") return false;
+  if (numberStr == "2" || numberStr == "3") return true;
+
+  // Vérifie si pair
+  if ((numberStr.back() - '0') % 2 == 0) return false;
+
+  // Convertir une borne pour la racine carrée : ici approximation en double
+  long double approx = std::stold(numberStr);
+  unsigned long long limit = static_cast<unsigned long long>(sqrt(approx));
+
+  for (unsigned int i = 3; i <= limit; i += 2) {
+    if (ModString(numberStr, i) == 0) {
+      return false;
+    }
   }
   return true;
 }
